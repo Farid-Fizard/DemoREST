@@ -1,4 +1,4 @@
-package com.myself.rest_demo.constructor;
+package com.myself.rest_demo.controller;
 
 import com.myself.rest_demo.model.CloudVendor;
 import com.myself.rest_demo.service.CloudVendorService;
