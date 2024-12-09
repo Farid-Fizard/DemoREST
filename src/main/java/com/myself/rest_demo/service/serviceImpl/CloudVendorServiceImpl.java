@@ -17,7 +17,7 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     }
 
     @Override
-    public CloudVendor getCloudVendor(String cloudVendorId) {
+    public CloudVendor getCloudVendor(Long cloudVendorId) {
         if(cloudVendorRepository.findById(cloudVendorId).isEmpty())
             throw new CloudVendorNotFoundException("Requested cloud vendor doesn't exist");
         return cloudVendorRepository.findById(cloudVendorId).get();
@@ -41,7 +41,7 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     }
 
     @Override
-    public String deleteCloudVendor(String cloudVendorId) {
+    public String deleteCloudVendor(Long cloudVendorId) {
         cloudVendorRepository.deleteById(cloudVendorId);
         return "Deleted Successfully";
     }

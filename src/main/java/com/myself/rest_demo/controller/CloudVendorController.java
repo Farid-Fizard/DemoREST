@@ -1,7 +1,11 @@
 package com.myself.rest_demo.controller;
 
 import com.myself.rest_demo.model.CloudVendor;
+import com.myself.rest_demo.response.APIResponse;
+import com.myself.rest_demo.response.ResponseHandler;
 import com.myself.rest_demo.service.CloudVendorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +20,15 @@ public class CloudVendorController {
     }
 
     @GetMapping("{vendorId}")
-    public CloudVendor getVendorDetails( @PathVariable("vendorId") String vendorId){
-        return  cloudVendorService.getCloudVendor(vendorId);
+    public ResponseEntity<APIResponse<CloudVendor>> getVendorDetails(@PathVariable("vendorId") Long vendorId){
+        return  ResponseHandler.responseBuilder("Requested vendor details", HttpStatus.OK,
+                cloudVendorService.getCloudVendor(vendorId));
     }
     @GetMapping()
-    public List<CloudVendor> getAllVendorDetails(){
-        return  cloudVendorService.getAllCloudVendors();
+    public ResponseEntity<APIResponse<List<CloudVendor>>> getAllVendorDetails(){
+        return ResponseHandler.responseBuilder("Details of every vendor", HttpStatus.OK,
+                cloudVendorService.getAllCloudVendors());
+
     }
     @PostMapping
     public String createVendorDetails(@RequestBody CloudVendor cloudVendor){
@@ -36,7 +43,7 @@ public class CloudVendorController {
     }
 
     @DeleteMapping("{vendorId}")
-    public String deleteVendorDetails( @PathVariable("vendorId") String vendorId){
+    public String deleteVendorDetails( @PathVariable("vendorId") Long vendorId){
         cloudVendorService.deleteCloudVendor(vendorId);
         return "Deleted successfully";
     }

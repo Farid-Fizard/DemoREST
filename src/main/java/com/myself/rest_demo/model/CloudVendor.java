@@ -9,26 +9,27 @@ import jakarta.persistence.Table;
 public class CloudVendor {
 
     @Id
-    private String vendorId;
+    private Long vendorId;
     private String vendorName;
-    private String vendorAdress;
+    private String vendorAddress;
     private String vendorPhoneNumber;
 
     public CloudVendor() {
+
     }
 
-    public CloudVendor(String vendorId, String vendorName, String vendorAdress, String vendorPhoneNumber) {
+    public CloudVendor(Long vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
         this.vendorId = vendorId;
         this.vendorName = vendorName;
-        this.vendorAdress = vendorAdress;
+        this.vendorAddress = vendorAddress;
         this.vendorPhoneNumber = vendorPhoneNumber;
     }
 
-    public String getVendorId() {
+    public Long getVendorId() {
         return vendorId;
     }
 
-    public void setVendorId(String vendorId) {
+    public void setVendorId(Long vendorId) {
         this.vendorId = vendorId;
     }
 
@@ -40,12 +41,12 @@ public class CloudVendor {
         this.vendorName = vendorName;
     }
 
-    public String getVendorAdress() {
-        return vendorAdress;
+    public String getVendorAddress() {
+        return vendorAddress;
     }
 
-    public void setVendorAdress(String vendorAdress) {
-        this.vendorAdress = vendorAdress;
+    public void setVendorAddress(String vendorAddress) {
+        this.vendorAddress = vendorAddress;
     }
 
     public String getVendorPhoneNumber() {
@@ -56,3 +57,4 @@ public class CloudVendor {
         this.vendorPhoneNumber = vendorPhoneNumber;
     }
 }
+
